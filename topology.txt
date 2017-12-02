@@ -11,7 +11,7 @@ Forsidan er categories sida og hefur "Sell" takka efst í hægra horni.
 Sell síðan er form með sér template og route. Drop down category listi með öllum categories úr gagnagrunninum.
 (sendir lista með categories á template-ið í gegnum route-ið)
 
-Formid sendir sidan upplysingarnar úr forminu í gagnagrunn í öðru route en með post request. INSERT INTO (%s)
+Formid sendir sidan upplysingarnar úr forminu í gagnagrunn í öðru route með post request. INSERT INTO (%s)
 
 
 Route-ið fyrir forsíðuna nær í values á category column, býr til lista með nöfnum sem values og
