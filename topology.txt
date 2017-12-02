@@ -2,15 +2,23 @@ Ebay
 
 Importar pymysql
 
-?Býrð til mysql gagnagrunn sem inniheldur töflur sem eru vörur (t.d. products: category, mynd, heiti, verd, info, contact_info)
+?Býrð til mysql gagnagrunn sem inniheldur töflur sem eru vörur (t.d. products: category, mynd (path), heiti,
+ verd, info, contact_info)
 ?Býrð til json skrá sem inniheldur dictionary's sem eru vöruflokkar ()
-
 
 Forsidan er categories sida og hefur "Sell" takka efst í hægra horni.
 
-Route-ið fyrir forsíðuna nær í values á category column, býr til lista með nöfnum sem values og nær í þau alphabetically,
-og sendir hann á template-ið sem value
+Sell síðan er form með sér template og route. Drop down category listi með öllum categories úr gagnagrunninum.
+(sendir lista með categories á template-ið í gegnum route-ið)
 
-Template-ið fyrir forsíðuna á að hafa link sem sendir notanda á viðeigandi route (category listinn með - í staðin fyrir bil og /)
+Formid sendir sidan upplysingarnar úr forminu í gagnagrunn í öðru route en með post request. INSERT INTO (%s)
 
-Býrð til <id> fyrir route þar sem það verður value úr category listanum (með - í staðin fyrir)
+
+Route-ið fyrir forsíðuna nær í values á category column, býr til lista með nöfnum sem values og
+nær í þau alphabetically, og sendir hann á template-ið sem value
+
+Template-ið fyrir forsíðuna á að hafa link sem sendir notanda á viðeigandi route (category
+listinn með - í staðin fyrir bil og eyðir öllum öðrum characterum út (og ef það eru fleiri en eitt
+bil þá gerir það bara eitt bandstrik)). path = urrlib.qoute_plus(strengur)
+
+Býrð til <id> fyrir route þar sem það verður value úr category listanum (með - í staðin fyrir bil, etc.)
