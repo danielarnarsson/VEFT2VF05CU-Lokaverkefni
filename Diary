@@ -8,3 +8,8 @@ Bjó til in development topology og setti inn bottle skrá
 
 12-01-2017:
 Byrjaði að búa til verkefnið
+
+12-02-2017:
+Bjó til routes, bjó til töfluna í gagnagrunninum og tengdi hann við sell
+route þannig að það er hægt að setja gögn úr forminu í gagnagrunninn,
+bætti við og eyddi úr topology-inu, bjó til template, bjó til css, og fleira.
