@@ -1,17 +1,17 @@
 from bottle import route, run, request, get, post, template, static_file
-import pymysql
+import pymysql.cursors
 
 @route('/')
 def forsida():
     return template('index')
 
-@route('/sell', method = 'get')
+@route('/sell', method='GET')
 def sell():
-    return template('sell')
+    return template('sell', saved=False)
 
-@route('/sell', method = 'post')
+@route('/sell', method = 'POST')
 def save():
-    text = request.forms.get('')
+    return template('sell', saved=True)
 
 # CSS skrár.  Leitar að öllum css skráarheitum í static/css möppunni á vefrót
 @route('/static/css/<filename:re:.*\.css>')
@@ -23,7 +23,7 @@ def send_css(filename):
 @route('/static/img/<filename:re:.*\.(jpg|png)>')
 def send_image(filename):
     # static/img directory
-    return static_file(filename, root='static/img', mimetype='image/jpg')
+    return static_file(filename, root='static/img', mimetype='image/jpeg,image/png')
 
 
 run(host='localhost', port=8080, debug=True)
