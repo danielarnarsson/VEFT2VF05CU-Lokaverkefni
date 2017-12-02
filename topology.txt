@@ -2,7 +2,7 @@ Ebay
 
 Importar pymysql
 
-?Býrð til mysql gagnagrunn sem inniheldur töflur sem eru vörur (t.d. products: category, mynd (path), heiti,
+?Býrð til mysql gagnagrunn sem inniheldur töflur sem eru vörur (t.d. products: category, heiti,
  verd, info, contact_info)
 ?Býrð til json skrá sem inniheldur dictionary's sem eru vöruflokkar ()
 
