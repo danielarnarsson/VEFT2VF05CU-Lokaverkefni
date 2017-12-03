@@ -2,8 +2,6 @@ from bottle import route, run, request, get, post, template, static_file, error,
 import pymysql.cursors, urllib
 from sys import argv
 
-TEMPLATE_PATH.insert(0, 'views')
-
 @route('/')
 @route('/category')
 def forsida():
@@ -82,4 +80,5 @@ def send_image(filename):
 def custom404(error):
 	return template('villa.tpl')
 
-run(host='0.0.0.0', port=argv[1])
+if __name__ == "__main__":
+	run(host='0.0.0.0', port=argv[1])
