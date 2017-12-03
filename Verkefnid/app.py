@@ -1,25 +1,67 @@
-from bottle import route, run, request, get, post, template, static_file
-import pymysql.cursors
+from bottle import route, run, request, get, post, template, static_file, error
+import pymysql.cursors, urllib
 
 @route('/')
+@route('/category')
 def forsida():
-    return template('index')
+	
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
+	sql = "SELECT `category` FROM `products` GROUP BY category ORDER BY category"
+	cur.execute(sql)
+	categories=cur.fetchall()
+	try:
+		return template('index', categories=categories)
+	except:
+		return template('index')
 
 @route('/sell', method='GET')
 def sell():
     return template('sell', saved=False)
 
+
 @route('/sell', method = 'POST')
 def save():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
 	category = request.forms.get('category')
 	title = request.forms.get('title')
 	price = request.forms.get('price')
-	info = request.forms.get('info')
-	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
-	cur = connection.cursor()
-	cur.execute("INSERT INTO `products` (`CATEGORY`, `TITLE`, `PRICE`, `INFO`) VALUES (%s, %s, %s, %s)", (category, title, price, info))
+	info = request.forms.get('info') 
+	sql = "INSERT INTO `products` (`CATEGORY`, `TITLE`, `PRICE`, `INFO`) VALUES (%s, %s, %s, %s)"
+	cur.execute(sql, (category, title, price, info))
 	connection.commit()
 	return template('sell', saved=True)
+
+@route('/books')
+@route('/Books')
+def books():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
+	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'books'"
+	cur.execute(sql)
+	products = cur.fetchall()
+	return template('products', products=products)
+	
+@route('/Computers')
+@route('/computers')
+def computer():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
+	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'computers'"
+	cur.execute(sql)
+	products = cur.fetchall()
+	return template('products', products=products)
+
+@route('/Cars')
+@route('/cars')
+def cars():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
+	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'cars'"
+	cur.execute(sql)
+	products = cur.fetchall()
+	return template('products', products=products)
 
 # CSS skrár.  Leitar að öllum css skráarheitum í static/css möppunni á vefrót
 @route('/static/css/<filename:re:.*\.css>')
@@ -33,5 +75,8 @@ def send_image(filename):
     # static/img directory
     return static_file(filename, root='static/img', mimetype='image/jpeg,image/png')
 
+@error(404)
+def custom404(error):
+	return template('villa.tpl')
 
 run(host='localhost', port=8080, debug=True)
