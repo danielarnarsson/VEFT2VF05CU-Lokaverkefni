@@ -1,5 +1,5 @@
 from bottle import route, run, request, get, post, template, static_file, error, TEMPLATE_PATH
-import pymysql.cursors, urllib
+import pymysql.cursors
 from sys import argv
 
 @route('/')
