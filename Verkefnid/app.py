@@ -12,9 +12,9 @@ def forsida():
 	cur.execute(sql)
 	categories=cur.fetchall()
 	try:
-		return template('index', categories=categories)
+		return template('index.tpl', categories=categories)
 	except:
-		return template('index')
+		return template('index.tpl')
 
 @route('/sell', method='GET')
 def sell():
@@ -32,7 +32,7 @@ def save():
 	sql = "INSERT INTO `products` (`CATEGORY`, `TITLE`, `PRICE`, `INFO`) VALUES (%s, %s, %s, %s)"
 	cur.execute(sql, (category, title, price, info))
 	connection.commit()
-	return template('sell', saved=True)
+	return template('sell.tpl', saved=True)
 
 @route('/books')
 @route('/Books')
@@ -42,7 +42,7 @@ def books():
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'books'"
 	cur.execute(sql)
 	products = cur.fetchall()
-	return template('products', products=products)
+	return template('products.tpl', products=products)
 	
 @route('/Computers')
 @route('/computers')
@@ -52,7 +52,7 @@ def computer():
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'computers'"
 	cur.execute(sql)
 	products = cur.fetchall()
-	return template('products', products=products)
+	return template('products.tpl', products=products)
 
 @route('/Cars')
 @route('/cars')
@@ -62,7 +62,7 @@ def cars():
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'cars'"
 	cur.execute(sql)
 	products = cur.fetchall()
-	return template('products', products=products)
+	return template('products.tpl', products=products)
 
 # CSS skrár.  Leitar að öllum css skráarheitum í static/css möppunni á vefrót
 @route('/static/css/<filename:re:.*\.css>')
