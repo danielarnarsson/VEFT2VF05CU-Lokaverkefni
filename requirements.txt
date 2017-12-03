@@ -1,2 +1,2 @@
 bottle
-web2py
+psycopg2

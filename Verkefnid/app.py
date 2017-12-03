@@ -1,5 +1,6 @@
 from bottle import route, run, request, get, post, template, static_file, error
 import pymysql.cursors, urllib
+from sys import argv
 
 @route('/')
 @route('/category')
@@ -79,4 +80,4 @@ def send_image(filename):
 def custom404(error):
 	return template('villa.tpl')
 
-run(host='localhost', port=8080, debug=True)
+run(host='0.0.0.0', port=argv[1])
