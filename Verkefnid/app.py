@@ -1,6 +1,8 @@
-from bottle import route, run, request, get, post, template, static_file, error
+from bottle import route, run, request, get, post, template, static_file, error, TEMPLATE_PATH
 import pymysql.cursors, urllib
 from sys import argv
+
+TEMPLATE_PATH.insert(0, 'views')
 
 @route('/')
 @route('/category')
