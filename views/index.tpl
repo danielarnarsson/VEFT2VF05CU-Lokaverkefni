@@ -15,8 +15,6 @@
 	<h3>No categories yet</h3>
 	%end
 	</main>
-	<br>
-	<br>
 	<nav>
 	<form method="get" action="/sell">
 	    <button type="submit">Sell</button>
