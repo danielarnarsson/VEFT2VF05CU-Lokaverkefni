@@ -16,7 +16,7 @@
 	<a href="/{{v}}">{{v}}</a><br>
 	%end
 	%end
-	%except NameError:
+	%except:
 	<h3>No categories yet</h3>
 	%end
 	</main>
