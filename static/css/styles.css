@@ -7,3 +7,16 @@ body {
 	background-color: #fff;
 	font-family: 'Roboto', sans-serif;
 }
+
+header {
+	text-align: center;
+	padding: 20px;	
+}
+
+nav {
+	text-align: center;	
+}
+
+main {
+	text-align: center;
+}
