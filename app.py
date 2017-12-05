@@ -14,6 +14,7 @@ def forsida():
 		return template('index.tpl', categories=categories)
 	except:
 		return template('index.tpl')
+	connection.close()
 
 @route('/sell', method='GET')
 def sell():
@@ -32,6 +33,7 @@ def save():
 	cur.execute(sql, (category, title, price, info))
 	connection.commit()
 	return template('sell.tpl', saved=True)
+	connection.close()
 
 @route('/books')
 @route('/Books')
@@ -42,16 +44,16 @@ def books():
 	cur.execute(sql)
 	products = cur.fetchall()
 	return template('products.tpl', products=products)
+	connection.close()
 	
 @route('/Computers')
 @route('/computers')
 def computer():
-	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
-	cur = connection.cursor()
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'computers'"
 	cur.execute(sql)
 	products = cur.fetchall()
 	return template('products.tpl', products=products)
+	connection.close()
 
 @route('/Cars')
 @route('/cars')
@@ -62,6 +64,7 @@ def cars():
 	cur.execute(sql)
 	products = cur.fetchall()
 	return template('products.tpl', products=products)
+	connection.close()
 
 # CSS skrár.  Leitar að öllum css skráarheitum í static/css möppunni á vefrót
 @route('/static/css/<filename:re:.*\.css>')
