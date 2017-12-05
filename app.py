@@ -1,4 +1,4 @@
-from bottle import route, run, request, get, post, template, static_file, error, TEMPLATE_PATH
+from bottle import route, run, request, get, post, template, static_file, error
 import pymysql.cursors
 from sys import argv
 
