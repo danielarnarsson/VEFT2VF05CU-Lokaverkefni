@@ -2,12 +2,11 @@ from bottle import route, run, request, get, post, template, static_file, error
 import pymysql.cursors
 from sys import argv
 
-connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
-cur = connection.cursor()
-
 @route('/')
 @route('/category')
 def forsida():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
 	sql = "SELECT `category` FROM `products` GROUP BY category ORDER BY category"
 	cur.execute(sql)
 	categories=cur.fetchall()
@@ -23,6 +22,8 @@ def sell():
 
 @route('/sell', method = 'POST')
 def save():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
 	category = request.forms.get('category')
 	title = request.forms.get('title')
 	price = request.forms.get('price')
@@ -35,6 +36,8 @@ def save():
 @route('/books')
 @route('/Books')
 def books():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'books'"
 	cur.execute(sql)
 	products = cur.fetchall()
@@ -43,6 +46,8 @@ def books():
 @route('/Computers')
 @route('/computers')
 def computer():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'computers'"
 	cur.execute(sql)
 	products = cur.fetchall()
@@ -51,6 +56,8 @@ def computer():
 @route('/Cars')
 @route('/cars')
 def cars():
+	connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
+	cur = connection.cursor()
 	sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'cars'"
 	cur.execute(sql)
 	products = cur.fetchall()
