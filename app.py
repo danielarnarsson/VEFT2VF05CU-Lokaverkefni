@@ -2,6 +2,7 @@ from bottle import route, run, request, get, post, template, static_file, error
 import pymysql.cursors
 from sys import argv
 
+
 @route('/')
 @route('/category')
 def forsida():
@@ -15,6 +16,7 @@ def forsida():
 		connection.close()
 	except Exception as e:
 		return template('villa.tpl', e=e)
+
 
 @route('/sell', method='GET')
 def sell():
@@ -40,6 +42,8 @@ def save():
 		connection.close()
 	except Exception as e:
 		return template('villa.tpl', e=e)
+
+
 @route('/books')
 @route('/Books')
 def books():
@@ -53,6 +57,8 @@ def books():
 		connection.close()
 	except Exception as e:
 		return template('villa.tpl', e=e)
+
+
 @route('/Computers')
 @route('/computers')
 def computer():
@@ -64,6 +70,8 @@ def computer():
 		connection.close()
 	except Exception as e:
 		return template('villa.tpl', e=e)
+
+
 @route('/Cars')
 @route('/cars')
 def cars():
@@ -77,17 +85,21 @@ def cars():
 		connection.close()
 	except Exception as e:
 		return template('villa.tpl', e=e)
+
+
 # CSS skrár.  Leitar að öllum css skráarheitum í static/css möppunni á vefrót
 @route('/static/css/<filename:re:.*\.css>')
 def send_css(filename):
 	# static/css directory
 	return static_file(filename, root='static/css')
 
+
 # JPG og PNG skrár
 @route('/static/img/<filename:re:.*\.(jpg|jpeg|png)>')
 def send_image(filename):
 	# static/img directory
 	return static_file(filename, root='static/img', mimetype='image/jpeg,image/png')
+
 
 @error(404)
 def custom404(error):
