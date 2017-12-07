@@ -36,6 +36,7 @@
 	%if saved == True:
 		<h2>Vara vistuð.</h2>
 		<a href="/">Til baka</a>
+		%end
 %except:
 	<p>Method not allowed.</p>
 %end
