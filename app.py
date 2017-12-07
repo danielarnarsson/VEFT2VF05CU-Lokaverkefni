@@ -20,8 +20,8 @@ def forsida():
 def sell():
 	try:
 		return template('sell', saved=False)
-    except Exception as e:
-    	return template('villa.tpl', e=e)
+	except Exception as e:
+		return template('villa.tpl', e=e)
 
 
 @route('/sell', method = 'POST')
@@ -86,8 +86,8 @@ def send_css(filename):
 # JPG og PNG skrár
 @route('/static/img/<filename:re:.*\.(jpg|jpeg|png)>')
 def send_image(filename):
-    # static/img directory
-    return static_file(filename, root='static/img', mimetype='image/jpeg,image/png')
+	# static/img directory
+	return static_file(filename, root='static/img', mimetype='image/jpeg,image/png')
 
 @error(404)
 def custom404(error):
