@@ -6,7 +6,6 @@
 <header><h1>Categories</h1></header>
 	<main>
 	%if len(categories) == 0:
-	<br>
 	<h3>No categories yet</h3>
 	%else:
 		%for value in categories:

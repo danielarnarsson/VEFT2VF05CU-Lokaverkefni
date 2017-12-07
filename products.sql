@@ -10,6 +10,4 @@ INFO TEXT,
 PRIMARY KEY (PRODUCT_NUMBER)
 );
 
-select * from products;
-
 #drop database 1907002160_vefth2_lokaverkefni;
