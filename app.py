@@ -13,6 +13,7 @@ def forsida():
 	try:
 		return template('index.tpl', categories=categories)
 	except:
+		print("Hallo")
 		return template('index.tpl')
 	connection.close()
 

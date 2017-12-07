@@ -6,13 +6,16 @@
 	<header><h1>Categories</h1></header>
 	<main>
 	%try:
+	%if len(categories) == 1:
+	<h3>No categories yet</h3>
+	%end
 	%for value in categories:
 	%for v in value:
 	<a href="/{{v}}">{{v}}</a><br>
 	%end
 	%end
 	%except:
-	<h3>No categories yet</h3>
+	%pass
 	%end
 	</main>
 	<nav>
