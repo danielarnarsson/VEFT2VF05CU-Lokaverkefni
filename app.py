@@ -10,11 +10,7 @@ def forsida():
 	sql = "SELECT `category` FROM `products` GROUP BY category ORDER BY category"
 	cur.execute(sql)
 	categories=cur.fetchall()
-	try:
-		return template('index.tpl', categories=categories)
-	except:
-		print("Hallo")
-		return template('index.tpl')
+	return template('index.tpl', categories=categories)
 	connection.close()
 
 @route('/sell', method='GET')
