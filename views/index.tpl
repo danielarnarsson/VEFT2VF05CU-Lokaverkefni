@@ -11,9 +11,10 @@
 		%end
 	%else:
 		%for value in categories:
-		%for v in value:
-		<a href="/{{v}}">{{v}}</a><br>
-		%end
+			%for v in value:
+			<a href="/{{v}}">{{v}}</a><br>
+				%end
+			%end
 	</main>
 	<nav>
 	<form method="get" action="/sell">
