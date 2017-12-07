@@ -15,6 +15,7 @@
 			<a href="/{{v}}">{{v}}</a><br>
 				%end
 			%end
+		%end
 	</main>
 	<nav>
 	<form method="get" action="/sell">
