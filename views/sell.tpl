@@ -32,11 +32,12 @@
 	<br>
 <input type="submit"/>
 </form>
-%if saved == True:
-<h2>Vara vistuð.</h2>
-<a href="/">Til baka</a>
+%try:
+	%if saved == True:
+		<h2>Vara vistuð.</h2>
+		<a href="/">Til baka</a>
+%except:
+	<p>Method not allowed.</p>
 %end
-%if saved == None:
-<p>Method not allowed.</p>
 </body>
 </html>
