@@ -13,7 +13,7 @@ def forsida():
 		categories=cur.fetchall()
 		return template('index.tpl', categories=categories)
 		connection.close()
-	except:
+	except Exception as e:
 		return template('villa.tpl', e=e)
 
 @route('/sell', method='GET')
