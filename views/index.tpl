@@ -8,11 +8,13 @@
 %if len(categories) == 0:
 <br>
 <h3>No categories yet</h3>
+%pass
 %end
 %else:
 	%for value in categories:
 		%for v in value:
 			<a href="/{{v}}">{{v}}</a><br>
+			%pass
 			%end
 		%end
 	%end
