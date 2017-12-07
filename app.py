@@ -19,7 +19,7 @@ def forsida():
 @route('/sell', method='GET')
 def sell():
 	try:
-    	return template('sell', saved=False)
+		return template('sell', saved=False)
     except Exception as e:
     	return template('villa.tpl', e=e)
 
