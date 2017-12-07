@@ -5,16 +5,16 @@
 <body>
 	<header><h1>Categories</h1></header>
 	<main>
-	%if len(categories) == 0:
+		%if len(categories) == 0:
 		<br>
 		<h3>No categories yet</h3>
 		%end
-	%else:
+		%else:
 		%for value in categories:
-			%for v in value:
-			<a href="/{{v}}">{{v}}</a><br>
-				%end
-			%end
+		%for v in value:
+		<a href="/{{v}}">{{v}}</a><br>
+		%end
+		%end
 		%end
 	</main>
 	<nav>
