@@ -8,6 +8,7 @@
 	%if len(categories) == 0:
 	<br>
 	<h3>No categories yet</h3>
+	%end
 	%else:
 		%try:
 		%end
@@ -18,6 +19,7 @@
 		%end
 		%except:
 		%end
+	%end
 	</main>
 	<nav>
 	<form method="get" action="/sell">
