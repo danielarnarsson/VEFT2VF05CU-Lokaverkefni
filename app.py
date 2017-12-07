@@ -39,7 +39,7 @@ def save():
 		return template('sell.tpl', saved=True)
 		connection.close()
 	except Exception as e:
-		return template('villa.tpl' e=e)
+		return template('villa.tpl', e=e)
 @route('/books')
 @route('/Books')
 def books():
