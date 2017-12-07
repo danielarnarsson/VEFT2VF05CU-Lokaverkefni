@@ -6,7 +6,7 @@
 	<header><h1>Categories</h1></header>
 	<main>
 	%try:
-	%if len(categories) == 1:
+	%if len(categories) == 0:
 	<h3>No categories yet</h3>
 	%end
 	%for value in categories:
