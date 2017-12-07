@@ -37,6 +37,7 @@
 		<h2>Vara vistuð.</h2>
 		<a href="/">Til baka</a>
 		%end
+	%end
 %except:
 	<p>Method not allowed.</p>
 %end
