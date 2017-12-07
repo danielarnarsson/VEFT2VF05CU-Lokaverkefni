@@ -17,6 +17,7 @@
 			%pass
 			%end
 		%end
+	%pass
 	%end
 </main>
 	<nav>
