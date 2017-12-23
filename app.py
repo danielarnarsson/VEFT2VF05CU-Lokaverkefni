@@ -58,6 +58,7 @@ def books():
 def computer():
 	try:
 		sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'computers'"
+		cur = connection.cursor()
 		cur.execute(sql)
 		products = cur.fetchall()
 		return template('products.tpl', products=products)
