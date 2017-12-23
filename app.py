@@ -63,6 +63,7 @@ def books():
 @route('/computers')
 def computer():
 	try:
+		connection = pymysql.connect(host='tsuts.tskoli.is', port=3306, user='1907002160', passwd='mypassword', db='1907002160_VEFTH2_lokaverkefni')
 		sql = "SELECT title, price, info FROM `products` WHERE category LIKE 'computers'"
 		cur = connection.cursor()
 		cur.execute(sql)
